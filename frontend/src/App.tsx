@@ -30,6 +30,13 @@ export default function App() {
     }
   };
 
+  // I could move the state down so when the message is recieved nothing rerenders except
+  // the component that renders messages, I could utilize useMemo. useCallback etc to
+  // optimize rerenders even more but it doesn't seem necessary here,
+  // it would only make the code less readable and more error-prone,
+  // I tend to try not to overuse optimization react hacks for the sake of
+  // readability and maintainablity of the code.
+
   return (
     <main className=" min-h-screen bg-slate-700 flex items-center justify-center">
       <section className="w-[450px] h-[700px] max-w-screen max-h-screen p-8 bg-white rounded-md flex flex-col items-center gap-8">
@@ -39,7 +46,7 @@ export default function App() {
         >
           {messages.map((message, index) => (
             <h1
-              key={index}
+              key={index} // index is appropriate to use here, because the order of the elements doesn't change
               className={cn(
                 index % 2 !== 0 && "ml-auto",
                 index === 0 && "mt-auto"
