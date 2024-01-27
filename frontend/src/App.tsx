@@ -32,7 +32,7 @@ export default function App() {
 
   return (
     <main className=" min-h-screen bg-slate-700 flex items-center justify-center">
-      <section className="w-[450px] h-[700px] p-8 bg-white rounded-md flex flex-col items-center gap-8">
+      <section className="w-[450px] h-[700px] max-w-screen max-h-screen p-8 bg-white rounded-md flex flex-col items-center gap-8">
         <div
           ref={containerRef}
           className="h-full w-full flex flex-col flex-nowrap border-2 border-gray-400 p-2 overflow-y-scroll"
