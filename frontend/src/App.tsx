@@ -3,6 +3,7 @@ import { UserInputForm } from "./components/UserInputForm/UserInputForm";
 import { useWebsocket } from "./hooks";
 import { ConnectionNotifier } from "./components/ConnectionNotifier/ConnectionNotifier";
 import { MessagesViewer } from "./components/MessagesViewer/MessagesViewer";
+import { ChatWrapper } from "./components/ChatWrapper/ChatWrapper";
 
 export default function App() {
   const [messages, setMessages] = useState<string[]>([]);
@@ -31,14 +32,12 @@ export default function App() {
   // performance benefits are very small and not worth sacrificing on readability and maintainability of the code
 
   return (
-    <main className="min-h-screen bg-gray-700 flex items-center justify-center">
-      <section className="scroll-smooth w-[450px] h-[700px] max-w-screen max-h-screen p-8 bg-white rounded-md flex flex-col items-center gap-8">
-        <ConnectionNotifier
-          isConnected={webSocket?.readyState === WebSocket.OPEN}
-        />
-        <MessagesViewer messages={messages} />
-        <UserInputForm handleMessageSend={handleMessageSend} />
-      </section>
-    </main>
+    <ChatWrapper>
+      <ConnectionNotifier
+        isConnected={webSocket?.readyState === WebSocket.OPEN}
+      />
+      <MessagesViewer messages={messages} />
+      <UserInputForm handleMessageSend={handleMessageSend} />
+    </ChatWrapper>
   );
 }

@@ -7,7 +7,7 @@ export const UserInputForm = ({
     onSubmit={(formEvent) => {
       formEvent.preventDefault();
 
-      // not very readable way to get an input value, would use a simple state if performance wan't the ultimate goal
+      // not very readable way to get an input value, would use a simple state if performance wasn't the ultimate goal
       const targetInput = formEvent.currentTarget
         .elements[0] as HTMLInputElement;
 

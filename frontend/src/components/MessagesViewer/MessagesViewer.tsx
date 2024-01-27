@@ -31,7 +31,7 @@ export const MessagesViewer = ({ messages }: { messages: string[] }) => {
               index === 0 && "mt-auto"
             )}
           >
-            {isResponse ? <strong>Bot: </strong> : <strong>You: </strong>}
+            <strong>{isResponse ? "Bot: " : "You: "}</strong>
             {message}
           </span>
         );
