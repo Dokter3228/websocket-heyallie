@@ -18,15 +18,21 @@ export const useWebsocket = ({
   useEffect(() => {
     const ws = new WebSocket(url);
 
-    ws.addEventListener("open", open);
+    // Usually it could be written a bit simpler, but because of the StrictMode that remounts components and by doing so closes and opens websocket connection twice I was forced to find a workaround.
+
+    ws.addEventListener("open", (e) => {
+      open(e);
+      setWebSocket(ws);
+    });
 
     ws.addEventListener("message", message);
 
-    ws.addEventListener("close", close);
+    ws.addEventListener("close", (e) => {
+      close(e);
+      setWebSocket(null);
+    });
 
     ws.addEventListener("error", error);
-
-    setWebSocket(ws);
 
     return () => {
       ws.close();

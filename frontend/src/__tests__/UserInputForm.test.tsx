@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { UserInputForm } from "./UserInputForm";
+import { UserInputForm } from "../components/UserInputForm/UserInputForm";
 
 describe("UserInputForm", () => {
   test("renders", () => {
